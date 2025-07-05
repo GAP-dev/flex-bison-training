@@ -3,17 +3,19 @@
 #  include <stdio.h>
 %}
 
-/* declare tokens */
 %token NUMBER
 %token ADD SUB MUL DIV ABS
 %token OP CP
 %token EOL
 
+
 %%
 
-calclist: /* nothing */
+
+
+calclist:
  | calclist exp EOL { printf("= %d\n> ", $2); }
- | calclist EOL { printf("> "); } /* blank line or a comment */
+ | calclist EOL { printf("> "); }
  ;
 
 exp: factor
@@ -32,8 +34,8 @@ term: NUMBER
  | OP exp CP { $$ = $2; }
  ;
 %%
-main()
-{
+
+main() {
   printf("> "); 
   yyparse();
 }

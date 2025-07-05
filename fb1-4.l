@@ -7,12 +7,14 @@
      MUL = 261,
      DIV = 262,
      ABS = 263,
-     EOL = 264 /* end of line */
+     EOL = 264
    };
 
    int yylval;
 
 %}
+
+
 
 %%
 "+"	{ return ADD; }
@@ -22,11 +24,11 @@
 "|"     { return ABS; }
 [0-9]+	{ yylval = atoi(yytext); return NUMBER; }
 \n      { return EOL; }
-[ \t]   { /* ignore white space */ }
+[ \t]   { /* ignore */ }
 .	{ printf("Mystery character %c\n", *yytext); }
 %%
-main()
-{
+
+main() {
   int tok;
 
   while(tok = yylex()) {

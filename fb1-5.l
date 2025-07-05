@@ -15,6 +15,6 @@
 
 \n      { return EOL; }
 "//".*  
-[ \t]   { /* ignore white space */ }
+[ \t]   { /* ignore */ }
 .	{ yyerror("Mystery character %c\n", *yytext); }
 %%
